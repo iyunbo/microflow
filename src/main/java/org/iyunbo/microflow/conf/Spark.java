@@ -8,7 +8,16 @@ import java.util.Properties;
 
 public class Spark {
 
-	public static JavaSparkContext sc() {
+	private static JavaSparkContext sparkS3;
+
+	public static synchronized JavaSparkContext sc() {
+		if (sparkS3 == null) {
+			sparkS3 = sparkOverS3();
+		}
+		return sparkS3;
+	}
+
+	private static JavaSparkContext sparkOverS3() {
 		Properties env = loadEnvironment();
 		final SparkConf conf = sparkConf(env.getProperty("spark.app.name"),
 				env.getProperty("spark.master"),
