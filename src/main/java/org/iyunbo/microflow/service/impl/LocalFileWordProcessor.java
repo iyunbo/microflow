@@ -1,6 +1,6 @@
 package org.iyunbo.microflow.service.impl;
 
-import org.iyunbo.microflow.service.WordService;
+import org.iyunbo.microflow.service.WordComputation;
 
 import java.io.IOException;
 import java.net.URI;
@@ -13,7 +13,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class LocalFileWordProcessor implements WordService {
+public class LocalFileWordProcessor implements WordComputation {
 	private final ClassLoader classLoader = getClass().getClassLoader();
 
 	@Override

@@ -5,12 +5,12 @@ import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class BigDataWordServiceTest {
-	private WordService wordService = new BigDataWordProcessor();
+public class BigDataWordComputationTest {
+	private WordComputation wordComputation = new BigDataWordProcessor();
 
 	@Test
 	public void should_count_words() {
-		assertThat(wordService.countWords("message.txt"))
+		assertThat(wordComputation.countWords("message.txt"))
 				.hasSizeGreaterThan(100)
 				.containsKeys("according", "for", "see", "hallo");
 	}
