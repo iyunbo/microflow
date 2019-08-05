@@ -14,12 +14,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(classes = {SparkConfig.class, ServiceConfig.class})
 public class WordServiceTest {
 	@Autowired
-	private WordService wordService;
+	private SparkWordService sparkWordService;
 
 	@Test
 	public void should_count_words() {
-		assertThat(wordService.getCount("this is a sentence"))
-				.hasSize(4)
-				.containsKeys("this", "is", "a", "sentence");
+		assertThat(sparkWordService.countWords("s3a://microflow/data/message.txt"))
+				.hasSizeGreaterThan(100)
+				.containsKeys("according", "for", "see", "hallo");
 	}
 }

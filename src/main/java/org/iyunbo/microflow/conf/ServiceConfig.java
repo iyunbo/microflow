@@ -1,7 +1,7 @@
 package org.iyunbo.microflow.conf;
 
 import org.apache.spark.api.java.JavaSparkContext;
-import org.iyunbo.microflow.service.WordService;
+import org.iyunbo.microflow.service.SparkWordService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Configuration;
 public class ServiceConfig {
 
 	@Bean
-	public WordService wordService(final JavaSparkContext sparkContext) {
-		return new WordService(sparkContext);
+	public SparkWordService wordService(final JavaSparkContext sparkContext) {
+		return new SparkWordService(sparkContext);
 	}
 
 }
