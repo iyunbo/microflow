@@ -4,13 +4,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.iyunbo.microflow.conf.Spark;
-import org.iyunbo.microflow.service.WordComputation;
+import org.iyunbo.microflow.service.WordCounter;
 
 import java.util.Arrays;
 import java.util.Map;
 
 @Slf4j
-public class BigDataWordProcessor implements WordComputation {
+public class BigDataWordProcessor implements WordCounter {
 
 	private static final String S3_PREFIX = "s3a://microflow/data";
 	private static final String S3_SEPARATOR = "/";
