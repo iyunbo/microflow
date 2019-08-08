@@ -18,7 +18,7 @@ public class Spark {
 	}
 
 	private static JavaSparkContext sparkOverS3() {
-		Properties env = loadEnvironment();
+		final Properties env = loadEnvironment();
 		final SparkConf conf = sparkConf(env.getProperty("spark.app.name"),
 				env.getProperty("spark.master"),
 				env.getProperty("s3.access.id"),
@@ -35,7 +35,7 @@ public class Spark {
 	}
 
 	private static Properties loadEnvironment() {
-		Properties properties = new Properties();
+		final Properties properties = new Properties();
 		try {
 			properties.load(Spark.class.getClassLoader().getResourceAsStream("spark.properties"));
 		} catch (IOException e) {
