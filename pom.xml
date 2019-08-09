@@ -14,8 +14,10 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.release>1.8</maven.compiler.release>
+        <!-- spark v2.4.3 is compatible with hadoop v2.7.x-->
+        <!-- https://spark.apache.org/downloads.html -->
         <spark.version>2.4.3</spark.version>
-        <haddop.version>2.7.3</haddop.version>
+        <hadoop.version>2.7.3</hadoop.version>
 
         <maven.build.timestamp.format>yyyyMMddHHmmssSSS</maven.build.timestamp.format>
     </properties>
@@ -36,6 +38,7 @@
                     <groupId>org.slf4j</groupId>
                     <artifactId>slf4j-log4j12</artifactId>
                 </exclusion>
+                <!-- use specified jackson -->
                 <exclusion>
                     <groupId>com.fasterxml.jackson.core</groupId>
                     <artifactId>jackson-core</artifactId>
@@ -57,8 +60,9 @@
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-common</artifactId>
-            <version>${haddop.version}</version>
+            <version>${hadoop.version}</version>
             <exclusions>
+                <!-- prefer httpcomponents from aws-java-jdk -->
                 <exclusion>
                     <groupId>org.apache.httpcomponents</groupId>
                     <artifactId>httpcore</artifactId>
@@ -68,13 +72,14 @@
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-aws</artifactId>
-            <version>${haddop.version}</version>
+            <version>${hadoop.version}</version>
         </dependency>
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk</artifactId>
             <version>1.7.4</version>
             <exclusions>
+                <!-- use specified jackson -->
                 <exclusion>
                     <groupId>com.fasterxml.jackson.core</groupId>
                     <artifactId>jackson-core</artifactId>
